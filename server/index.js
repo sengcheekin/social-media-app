@@ -1,0 +1,36 @@
+import express from "express";
+import bodyParser from "body-parser";
+import mongoose from "mongoose";
+import cors from "cors";
+import dotenv from "dotenv";
+import multer from "multer";
+import helmet from "helmet";
+import morgan from "morgan";
+import path from "path";
+import { fileURLToPath } from "url";
+
+/* CONFIGURATIONS */
+const __filename = fileURLToPath(import.meta.url); // to get filename, specific to type="module"
+const __dirname = path.dirname(__filename); // to get directory name
+dotenv.config(); // load .env file
+const app = express(); // initialize express app to use middlewares
+app.use(express.json());
+app.use(helmet());
+app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
+app.use(morgan("common"));
+app.use(bodyParser.json({ limit: "30mb", extended: true }));
+app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
+app.use(cors());
+app.use("/assets", express.static(path.join(__dirname, "public/assets"))); // set local directory for assets. In real world, we use actual storage/cloud storage for this
+
+/* FILE STORAGE */
+// Gotten from the multer documentation. This is to locally store files people upload.
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "public/assets");
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  },
+});
+const upload = multer({ storage: storage });

@@ -3,7 +3,7 @@ nodemon - server auto restart
 express - library
 body-parser - process request body
 bcrypt - password encryption
-cors - cross origin request
+cors - cross origin resource sharing policy
 dotenv - environment variables
 gridfs-stream - file upload
 multer & multer-gridfs-storage - upload files locally

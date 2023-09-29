@@ -1,0 +1,15 @@
+Following packages are installed using npm in server.
+nodemon - server auto restart
+express - library
+body-parser - process request body
+bcrypt - password encryption
+cors - cross origin request
+dotenv - environment variables
+gridfs-stream - file upload
+multer & multer-gridfs-storage - upload files locally
+helmet - request safety
+morgan - logging
+jsonwebtoken - authentication
+mongoose - mongoDB access
+
+add "type": "module" in package.json to use ES6 import/export instead of require

@@ -1,0 +1,12 @@
+react-redux - state managing tool
+@reduxjs/toolkit - easier way to use redux. Wrapper around redux
+redux-persist - can store state into local storage. E.g save user and token information into local so info still there even if close app
+react-dropzone - file upload/handling at frontend to send backend
+dotenv - env variables
+formik - form handling 
+yup - validation
+react-router-dom@6 - handle different routes and different pages
+@mui/material
+@emotion/react 
+@emotion/styled 
+@mui/icons-material

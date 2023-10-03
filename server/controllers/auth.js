@@ -26,6 +26,7 @@ export const register = async (req, res) => {
     res.status(201).json(savedUser); // 201 means something is created
   } catch (error) {
     res.status(500).json({ error: error.message }); // 500 means something is wrong with the server
+    console.log("auth.js line 29");
   }
 };
 

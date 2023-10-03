@@ -11,7 +11,7 @@ export const register = async (req, res) => {
     const salt = await bcrypt.genSalt();
     const hashedPassword = await bcrypt.hash(password, salt);
 
-    const newUser = {
+    const newUser = new User({
       firstName,
       lastName,
       email,
@@ -20,7 +20,7 @@ export const register = async (req, res) => {
       occupation,
       viewedProfile: Math.floor(Math.random() * 10000),
       impressions: Math.floor(Math.random() * 10000),
-    };
+    });
 
     const savedUser = await newUser.save();
     res.status(201).json(savedUser); // 201 means something is created

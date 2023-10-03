@@ -24,7 +24,7 @@ const registerSchema = yup.object().shape({
   password: yup.string().required("required"),
   location: yup.string().required("required"),
   occupation: yup.string().required("required"),
-  picturePath: yup.string().required("required"),
+  picture: yup.string().required("required"),
 });
 
 const loginSchema = yup.object().shape({
@@ -39,7 +39,7 @@ const initialValuesRegister = {
   password: "",
   location: "",
   occupation: "",
-  picturePath: "",
+  picture: "",
 };
 
 const initialValuesLogin = {
@@ -59,7 +59,6 @@ const Form = () => {
   const register = async (values, onSubmitProps) => {
     // this allows us to send form info with image
     const formData = new FormData();
-    console.log("Wuzgood");
     for (let value in values) {
       formData.append(value, values[value]);
     }
@@ -76,7 +75,7 @@ const Form = () => {
     onSubmitProps.resetForm();
 
     if (savedUser) {
-      setPageType("Login");
+      setPageType("login");
     }
   };
 

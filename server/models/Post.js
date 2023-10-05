@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const postSchema = new mongoose.Schema(
+const postSchema = mongoose.Schema(
   {
     userId: {
       type: String,
@@ -11,10 +11,6 @@ const postSchema = new mongoose.Schema(
       required: true,
     },
     lastName: {
-      type: String,
-      required: true,
-    },
-    userId: {
       type: String,
       required: true,
     },
@@ -31,9 +27,7 @@ const postSchema = new mongoose.Schema(
       default: [],
     },
   },
-  {
-    timestamps: true,
-  }
+  { timestamps: true }
 );
 
 const Post = mongoose.model("Post", postSchema);

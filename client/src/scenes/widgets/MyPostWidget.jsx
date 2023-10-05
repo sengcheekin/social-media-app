@@ -33,7 +33,7 @@ const MyPostWidget = ({ picturePath }) => {
   const { palette } = useTheme();
   const { _id } = useSelector((state) => state.user); // get user from store so we can know who is posting, and send it to backend
   const token = useSelector((state) => state.token); //authorize user to post
-  const isNonMobileScreens = useMediaQuery("(min-width: 1000px");
+  const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
   const mediumMain = palette.neutral.mediumMain;
   const medium = palette.neutral.medium;
 
@@ -46,7 +46,7 @@ const MyPostWidget = ({ picturePath }) => {
       formData.append("picturePath", image.name);
     }
 
-    const response = await fetch("http://localhost:3001/posts", {
+    const response = await fetch(`http://localhost:3001/posts`, {
       method: "POST",
       headers: { Authorization: `Bearer ${token}` },
       body: formData,
@@ -60,7 +60,7 @@ const MyPostWidget = ({ picturePath }) => {
   return (
     <WidgetWrapper>
       <FlexBetween gap="1.5rem">
-        <UserImage picturePath={picturePath} />
+        <UserImage image={picturePath} />
         <InputBase
           placeholder="What's on your mind?"
           onChange={(e) => setPost(e.target.value)}
@@ -172,7 +172,9 @@ const MyPostWidget = ({ picturePath }) => {
             backgroundColor: palette.primary.main,
             borderRadius: "3rem",
           }}
-        ></Button>
+        >
+          Post
+        </Button>
       </FlexBetween>
     </WidgetWrapper>
   );

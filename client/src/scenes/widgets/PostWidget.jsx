@@ -30,7 +30,7 @@ const PostWidget = ({
   const isLiked = Boolean(likes[loggedInUserId]);
   const likeCount = Object.keys(likes).length;
 
-  const palette = useTheme();
+  const { palette } = useTheme();
   const main = palette.neutral.main;
   const primary = palette.primary.main;
 
@@ -67,7 +67,7 @@ const PostWidget = ({
           src={`http://localhost:3001/assets/${picturePath}`}
         />
       )}
-      <FlexBetween mt="0.35rem">
+      <FlexBetween mt="0.25rem">
         <FlexBetween gap="1rem">
           <FlexBetween gap="0.3rem">
             <IconButton onClick={patchLike}>
@@ -92,11 +92,10 @@ const PostWidget = ({
           <ShareOutlined />
         </IconButton>
       </FlexBetween>
-
       {isComments && (
         <Box mt="0.5rem">
           {comments.map((comment, i) => (
-            <Box key={`${name} - ${i}`}>
+            <Box key={`${name}-${i}`}>
               <Divider />
               <Typography sx={{ color: main, m: "0.5rem 0", pl: "1rem" }}>
                 {comment}
